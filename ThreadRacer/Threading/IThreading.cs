@@ -8,5 +8,6 @@ namespace ThreadRacer.Threading
 {
     interface IThreading
     {
+        float Start();
     }
 }
