@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Thread = System.Threading.Tasks;
 using ThreadRacer.Tracks;
 
 namespace ThreadRacer.Threading
@@ -12,7 +12,7 @@ namespace ThreadRacer.Threading
         public float Start(ITrack track)
         {
             int maxThreads = 5;
-            List<System.Threading.Tasks.Task> tasks = new List<System.Threading.Tasks.Task>();
+            List<Thread.Task> tasks = new List<Thread.Task>();
 
             List<Func<int>> methods = new List<Func<int>>();
             methods.Add(TestTask);
@@ -32,7 +32,7 @@ namespace ThreadRacer.Threading
 
             for (int i = 0; i < maxThreads; i++)
             {
-                System.Threading.Tasks.Task task = new System.Threading.Tasks.Task(() =>
+                Thread.Task task = new Thread.Task(() =>
                 {
                     for (int j = 0; j < methodCount; j++)
                     {
@@ -44,7 +44,7 @@ namespace ThreadRacer.Threading
                 tasks.Add(task);
             }
 
-            foreach(System.Threading.Tasks.Task t in tasks)
+            foreach(Thread.Task t in tasks)
             {
                 t.Start();
             }
