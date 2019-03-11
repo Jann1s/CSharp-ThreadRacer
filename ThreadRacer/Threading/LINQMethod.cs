@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ThreadRacer.Threading
 {
-    interface IThreading
+    class LINQMethod : IThreading
     {
-        float Start();
+
     }
 }

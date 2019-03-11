@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThreadRacer.Threading
+namespace ThreadRacer.Tracks
 {
-    interface IThreading
+    class PrimeNumbers
     {
-        float Start();
     }
 }

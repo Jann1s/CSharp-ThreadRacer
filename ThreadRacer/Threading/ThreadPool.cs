@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ThreadRacer.Threading
 {
-    interface IThreading
+    class ThreadPool : IThreading
     {
-        float Start();
+
     }
 }
