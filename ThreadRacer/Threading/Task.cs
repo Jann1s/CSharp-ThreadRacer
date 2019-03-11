@@ -7,7 +7,7 @@ using ThreadRacer.Tracks;
 
 namespace ThreadRacer.Threading
 {
-    class Task
+    class Task : IThreading
     {
         public float Start(ITrack track)
         {

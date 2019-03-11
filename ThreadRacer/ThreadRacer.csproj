@@ -125,12 +125,17 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="Threading\AsyncAwait.cs" />
     <Compile Include="Threading\IThreading.cs" />
+    <Compile Include="Threading\LINQMethod.cs" />
     <Compile Include="Threading\Task.cs" />
+    <Compile Include="Threading\ThreadPool.cs" />
     <Compile Include="ThreadRacer.cs" />
+    <Compile Include="Tracks\CalcLargeFactorials.cs" />
+    <Compile Include="Tracks\Database.cs" />
     <Compile Include="Tracks\ITrack.cs" />
     <Compile Include="Tracks\Loop.cs" />
-    <Compile Include="Tracks\PI.cs" />
+    <Compile Include="Tracks\PrimeNumbers.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
