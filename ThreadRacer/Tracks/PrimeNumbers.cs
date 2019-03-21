@@ -9,7 +9,15 @@ namespace ThreadRacer.Tracks
     class PrimeNumbers
     {
 
-       
+        static void Main(string[] args) {
+
+            int number = 12312312;
+            // for now I assume this is the entry point
+            if(!isNumberValid(number)) {
+                return "Invalid number!";
+            }
+            getPrimeNumbersBeforeMe(number);
+        }
         
         //this function returns the number of primary numbers which are lower than the given number
         public int calcPrimeNumbersBeforeMe(int number) {
