@@ -8,5 +8,6 @@ namespace ThreadRacer.Tracks
 {
     interface ITrack
     {
+        List<Func<bool>> GetFunctions();
     }
 }

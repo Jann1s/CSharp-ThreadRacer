@@ -9,37 +9,39 @@ namespace ThreadRacer.Tracks
     class PrimeNumbers
     {
 
-        static void Main(string[] args) {
+        private List<Func<bool>> functions;
 
-            int number = 12312312;
-            // for now I assume this is the entry point
-            if(!isNumberValid(number)) {
-                return "Invalid number!";
-            }
-            getPrimeNumbersBeforeMe(number);
+        public PrimeNumbers()
+        {
+            functions.Add(GetTotalPrimeNumbers);
+            functions.Add(PopulateArrayWithPrimeNumbers);
+        }
+
+        public List<Func<bool>> GetFunctions()
+        {
+            return functions;
         }
         
         //this function returns the number of primary numbers which are lower than the given number
-        public int calcPrimeNumbersBeforeMe(int number) {
+        public bool GetTotalPrimeNumbers() {
             int primeNumbersCount = 0;
-            for(int i = 0; i <= number; i++) {
+            for(int i = 0; i <= Int32.MaxNumber; i++) {
                   if(isPrimeNumber(i)) {
-                    Console.WriteLine("Prime number: " + i);
                     primeNumbersCount++;
                   }  
             }
-            return primeNumbersCount;
+            return true;
         }
 
         // this function returns a list of prime numbers which are before the given number
-        public List<int> getPrimeNumbersBeforeMe(int number) {
+        public bool PopulateArrayWithPrimeNumbers() {
             List<int> primeNumbers = new ArrayList();
-            for(int i = 0; i <= number; i++) {
+            for(int i = 0; i <= Int32.MaxNumber; i++) {
                   if(isPrimeNumber(i)) {
-                     Console.WriteLine("Prime number is added to the list: " + i);
                     primeNumbers.add(i);
                   }  
             }
+            return true;
         }
 
 
@@ -62,13 +64,5 @@ namespace ThreadRacer.Tracks
             return true;
             }
         }    
-        
-        // validate
-        private bool isNumberValid(int number) {
-            if(number >= int.MaxValue) {
-                return false;
-            }
-            return true;
-        }
     }
 }

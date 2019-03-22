@@ -3,24 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThreadRacer.Tracks;
 
 namespace ThreadRacer.Threading
 {
     class ThreadPool : IThreading
     {
-        public Start(func task, int numberOfCars)
+        public bool Start(ITrack track, int numberOfThreads)
         {
-            //Get al the number of available threads
-            int workerThreads;
+            List<Func<bool>> functions = track.GetFunctions();
+
             int completionPortThreads;
-            ThreadPool.GetAvailableThreads(out workerThreads, out completionPortThreads);
+            ThreadPool.GetAvailableThreads(out numberOfThreads, out completionPortThreads);
 
             //Dump work into threadpool
             //The threadpool will manage everything
-            for (int i = 0; i < numberOfCars; i++)
+            for (int i = 0; i < functions.Count; i++)
             {
-                ThreadPool.QueueUserWorkItem(task, i);
+                ThreadPool.QueueUserWorkItem(functions, i);
+              
             }
+
+            // TODO: fix the instant return true
+            return true;
         }
     }
 }
