@@ -8,6 +8,6 @@ namespace ThreadRacer.Threading
 {
     interface IThreading
     {
-        float Start(func task, int numberOfCars);
+        //float Start()
     }
 }

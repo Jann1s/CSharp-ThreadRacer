@@ -9,39 +9,33 @@ namespace ThreadRacer.Threading
 {
     class Task : IThreading
     {
-        public float Start(ITrack track)
+        public bool Start(ITrack track, int numberOfThreads)
         {
-            int maxThreads = 5;
             List<Thread.Task> tasks = new List<Thread.Task>();
-
-            List<Func<int>> methods = new List<Func<int>>();
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
-            methods.Add(TestTask);
+            List<Func<bool>> functions = track.GetFunctions();
 
             int index = 0;
-            int methodCount = methods.Count / maxThreads;
-            int buffer = methods.Count % maxThreads;
+            int methodCount = functions.Count / numberOfThreads;
+            int buffer = functions.Count % numberOfThreads;
 
-            for (int i = 0; i < maxThreads; i++)
+            for (int i = 0; i < numberOfThreads; i++)
             {
-                Thread.Task task = new Thread.Task(() =>
+                if (index < functions.Count)
                 {
-                    for (int j = 0; j < methodCount; j++)
+                    Thread.Task task = new Thread.Task(() =>
                     {
-                        methods[index]();
+                        functions[index]();
                         index++;
-                    }
-                });
 
-                tasks.Add(task);
+                        if (buffer >= 1)
+                        {
+                            functions[index]();
+                            index++;
+                        }
+                    });
+
+                    tasks.Add(task);
+                }
             }
 
             foreach(Thread.Task t in tasks)
@@ -49,17 +43,9 @@ namespace ThreadRacer.Threading
                 t.Start();
             }
 
-            return 0;
-        }
+            Thread.Task.WaitAll(tasks.ToArray());
 
-        private int TestTask()
-        {
-            for (int i = 0; i < 10000000; i++)
-            {
-                float test = (156 / 5) * i;
-            }
-
-            return 0;
+            return true;
         }
     }
 }
