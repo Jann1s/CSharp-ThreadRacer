@@ -39,3 +39,31 @@ namespace ThreadRacer.Tracks
             for(int i = 0; i <= Int32.MaxValue; i++) {
                   if(isPrimeNumber(i)) {
                     primeNumbers.Add(i);
+                  }  
+            }
+            return true;
+        }
+
+
+        // prime number is the number which is dividible by itself and 1
+        // we exclude 1 in this function
+        private bool isPrimeNumber(int value) {
+            if(value == 2) {
+                return true;
+            }                          
+
+            if(value != 1) {
+                int boundry = (int) Math.Floor(Math.Sqrt(value));
+
+                for(int i = 2; i <= boundry; i++) {
+                    if (value % i == 0) {
+                        // number has no decimals
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }    
+    }
+}
