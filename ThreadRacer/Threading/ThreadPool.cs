@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThreadRacer.Tracks;
-using System.Threading;
+using Windows.Foundation;
+using TP = Windows.System.Threading;
 
 namespace ThreadRacer.Threading
 {
@@ -14,19 +15,26 @@ namespace ThreadRacer.Threading
         {
             List<Func<bool>> functions = track.GetFunctions();
 
-            int completionPortThreads;
-            ThreadPool.GetAvailableThreads(out numberOfThreads, out completionPortThreads);
-
-            //Dump work into threadpool
-            //The threadpool will manage everything
+            uint totalFunctionsCompleted = 0;
             for (int i = 0; i < functions.Count; i++)
             {
-                ThreadPool.QueueUserWorkItem(functions, i);
-              
+                IAsyncAction asyncAction = TP.ThreadPool.RunAsync((workItem) =>
+                {
+                    functions[i]();
+                });
+
+                // task is complete
+               asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
+               {
+                   totalFunctionsCompleted++;
+               });
             }
 
-            // TODO: fix the instant return true
-            return true;
+            if(functions.Count == totalFunctionsCompleted)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
