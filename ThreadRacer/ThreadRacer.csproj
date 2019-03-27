@@ -125,6 +125,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="RaceWindow.xaml.cs">
+      <DependentUpon>RaceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectCar.xaml.cs">
+      <DependentUpon>SelectCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTrack.xaml.cs">
+      <DependentUpon>SelectTrack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Threading\AsyncAwait.cs" />
     <Compile Include="Threading\IThreading.cs" />
     <Compile Include="Threading\LINQMethod.cs" />
@@ -161,6 +170,18 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RaceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectTrack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

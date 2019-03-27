@@ -13,33 +13,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ThreadRacer
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class SelectTrack : Page
     {
-        public MainPage()
+        public SelectTrack()
         {
             this.InitializeComponent();
-        }
-
-        public void SetTrackText(String text)
-        {
-            trackSelection.Text = text;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(SelectTrack));
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(SelectCar));
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
@@ -47,9 +32,31 @@ namespace ThreadRacer
 
         }
 
+        //Back Button
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        //Factorials
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+            //String text = "Factorials";
+            //MainPage.SetTrackText(text);            
+            //MainPage.trackSelection.Text = "Factorials";
+        }
+
+        //Loop
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(RaceWindow));
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        //Prime Numbers
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
