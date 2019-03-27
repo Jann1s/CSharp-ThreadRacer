@@ -25,7 +25,7 @@ namespace ThreadRacer.Tracks
         //this function returns the number of primary numbers which are lower than the given number
         public bool GetTotalPrimeNumbers() {
             int primeNumbersCount = 0;
-            for(int i = 0; i <= Int32.MaxNumber; i++) {
+            for(int i = 0; i <= Int32.MaxValue; i++) {
                   if(isPrimeNumber(i)) {
                     primeNumbersCount++;
                   }  
@@ -35,10 +35,10 @@ namespace ThreadRacer.Tracks
 
         // this function returns a list of prime numbers which are before the given number
         public bool PopulateArrayWithPrimeNumbers() {
-            List<int> primeNumbers = new ArrayList();
-            for(int i = 0; i <= Int32.MaxNumber; i++) {
+            List<int> primeNumbers = new List<int>();
+            for(int i = 0; i <= Int32.MaxValue; i++) {
                   if(isPrimeNumber(i)) {
-                    primeNumbers.add(i);
+                    primeNumbers.Add(i);
                   }  
             }
             return true;
@@ -53,7 +53,7 @@ namespace ThreadRacer.Tracks
             }                          
 
             if(value != 1) {
-                int boundry = (int) Math.Floor(Math.sqrt(value));
+                int boundry = (int) Math.Floor(Math.Sqrt(value));
 
                 for(int i = 2; i <= boundry; i++) {
                     if (value % i == 0) {
@@ -61,8 +61,9 @@ namespace ThreadRacer.Tracks
                         return false;
                     }
                 }
-            return true;
+                return true;
             }
+            return false;
         }    
     }
 }
