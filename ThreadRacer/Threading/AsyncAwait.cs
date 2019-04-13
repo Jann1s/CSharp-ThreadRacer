@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Thread = System.Threading.Tasks;
+using System.Threading.Tasks;
 using ThreadRacer.Tracks;
 
 namespace ThreadRacer.Threading
