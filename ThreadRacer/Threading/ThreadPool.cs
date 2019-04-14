@@ -16,24 +16,26 @@ namespace ThreadRacer.Threading
             List<Func<bool>> functions = track.GetFunctions();
 
             uint totalFunctionsCompleted = 0;
-            for (int i = 0; i < functions.Count; i++)
+
+            foreach(Func<bool> func in functions)
             {
                 IAsyncAction asyncAction = TP.ThreadPool.RunAsync((workItem) =>
                 {
-                    functions[i]();
+                    func();
                 });
 
                 // task is complete
-               asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
-               {
-                   totalFunctionsCompleted++;
-               });
+                asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
+                {
+                    totalFunctionsCompleted++;
+                });
             }
 
             if(functions.Count == totalFunctionsCompleted)
             {
                 return true;
             }
+
             return false;
         }
     }

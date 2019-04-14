@@ -14,7 +14,7 @@
         <Button Content="Start Race" HorizontalAlignment="Left" Margin="112,546,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="30" RequestedTheme="Default" Background="#33000000" Click="Button_Click_2"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,30,0,0" Text="ThreadRacer" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48"/>
         <TextBlock x:Name="trackSelection" HorizontalAlignment="Left" Margin="365,138,0,0" Text="= No Track selected" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="365,290,0,0" Text="= No Cars selected" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock x:Name="carSelection" HorizontalAlignment="Left" Margin="365,290,0,0" Text="= No Cars selected" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"/>
 
     </Grid>
 </Page>
