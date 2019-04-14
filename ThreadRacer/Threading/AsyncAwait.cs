@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using microTasks = System.Threading.Tasks;
 using ThreadRacer.Tracks;
 
@@ -11,11 +12,12 @@ namespace ThreadRacer.Threading
     {
         public bool Start(ITrack track, int numberOfThreads)
         {
-            AsyncTask(track, numberOfThreads);
+            var task = microTasks.Task.Run(async () => await AsyncTask(track, numberOfThreads));
+            task.Wait();
             return true;
         }
 
-        public async void AsyncTask(ITrack track, int numberOfThreads)
+        public async microTasks.Task<bool> AsyncTask(ITrack track, int numberOfThreads)
         {
             List<microTasks.Task> tasks = new List<microTasks.Task>();
             List<Func<bool>> functions = track.GetFunctions();
@@ -35,6 +37,8 @@ namespace ThreadRacer.Threading
                 t.Start();
                 await t;
             }
+
+            return true;
         }
     }
 }

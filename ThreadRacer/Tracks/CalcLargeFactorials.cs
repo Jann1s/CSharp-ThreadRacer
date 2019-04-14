@@ -16,6 +16,7 @@ namespace ThreadRacer.Tracks
 
         public CalcLargeFactorials()
         {
+            functions = new List<Func<bool>>();
             functions.Add(CalcLargeFactorial);
             functions.Add(CalcLargerFactorial);
             functions.Add(CalcLargestFactorial);
