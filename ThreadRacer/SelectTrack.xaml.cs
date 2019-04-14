@@ -25,6 +25,7 @@ namespace ThreadRacer
     public sealed partial class SelectTrack : Page
     {
         private Race race;
+
         public SelectTrack()
         {
             this.InitializeComponent();

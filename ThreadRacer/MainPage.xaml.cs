@@ -35,10 +35,35 @@ namespace ThreadRacer
             {
                 Race tmpRace = (Race)e.Parameter;
 
+                race = tmpRace;
+                
                 if (tmpRace.track != null)
                 {
                     race.track = tmpRace.track;
-                    trackSelection.Text = "= " + race.track.ToString();
+
+                    if (race.track is Tracks.CalcLargeFactorials)
+                    {
+                        trackSelection.Text = "= Calculate large factorials";
+                    }
+                    else if (race.track is Tracks.Loop)
+                    {
+                        trackSelection.Text = "= Loop";
+                    }
+                    else if (race.track is Tracks.PrimeNumbers)
+                    {
+                        trackSelection.Text = "= Prime Numbers";
+                    }
+                }
+
+                string[] cars = race.GetCars().ToArray();
+
+                if (cars.Length > 0)
+                {
+                    carSelection.Text = "= " + String.Join(", ", cars);
+                }
+                else
+                {
+                    carSelection.Text = "= No Cars selected";
                 }
             }
         }
@@ -65,7 +90,7 @@ namespace ThreadRacer
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(RaceWindow));
+            this.Frame.Navigate(typeof(RaceWindow), race);
         }
     }
 }

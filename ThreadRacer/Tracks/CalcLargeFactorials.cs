@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ThreadRacer.Tracks
 {
-    class CalcLargeFactorials
+    class CalcLargeFactorials : ITrack
     {
         private List<Func<bool>> functions;
         const uint FACTORIAL_LARGE = 5000;

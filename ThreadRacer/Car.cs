@@ -65,14 +65,14 @@ namespace ThreadRacer
             {
                 return "Single Thread";
             }
+            else if (threadingMethod is Threading.AsyncAwait)
+            {
+                return "Async Await";
+            }
             else
             {
                 return "Nope";
-            }/*
-            else if (threadingMethod is Threading.)
-            {
-
-            }*/
+            }
         }
     }
 }

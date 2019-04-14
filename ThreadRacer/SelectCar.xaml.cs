@@ -22,9 +22,16 @@ namespace ThreadRacer
     /// </summary>
     public sealed partial class SelectCar : Page
     {
+        private Race race;
+
         public SelectCar()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            race = (Race)e.Parameter;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +41,32 @@ namespace ThreadRacer
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            if (check_async.IsChecked == true)
+            {
+                race.AddCar(new Threading.AsyncAwait(), 4);
+            }
+
+            if (check_linq.IsChecked == true)
+            {
+                race.AddCar(new Threading.LINQMethod(), 4);
+            }
+
+            if (check_tasks.IsChecked == true)
+            {
+                race.AddCar(new Threading.Task(), 4);
+            }
+
+            if (check_threadpool.IsChecked == true)
+            {
+                race.AddCar(new Threading.ThreadPool(), 4);
+            }
+
+            if (check_single.IsChecked == true)
+            {
+                race.AddCar(new Threading.Single(), 4);
+            }
+
+            this.Frame.Navigate(typeof(MainPage), race);
         }
     }
 }
