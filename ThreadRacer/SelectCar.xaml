@@ -11,27 +11,33 @@
     <Grid Background="#FF555353">
         <TextBlock HorizontalAlignment="Center" Margin="0,30,0,0" Text="Select Cars" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="112,112,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="30" Click="Button_Click" Background="#33000000"/>
-        <CheckBox Content="ThreadPool" HorizontalAlignment="Left" Margin="520,181,0,0" VerticalAlignment="Top">
+        <CheckBox x:Name="check_threadpool" Content="ThreadPool" HorizontalAlignment="Left" Margin="520,181,0,0" VerticalAlignment="Top">
             <CheckBox.RenderTransform>
                 <CompositeTransform ScaleX="2" ScaleY="2"/>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <CheckBox Content="AsyncWait" HorizontalAlignment="Left" Margin="520,250,0,0" VerticalAlignment="Top">
+        <CheckBox x:Name="check_async" Content="AsyncWait" HorizontalAlignment="Left" Margin="520,250,0,0" VerticalAlignment="Top">
             <CheckBox.RenderTransform>
                 <CompositeTransform ScaleX="2" ScaleY="2"/>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <CheckBox Content="Tasks" HorizontalAlignment="Left" Margin="520,319,0,0" VerticalAlignment="Top">
+        <CheckBox x:Name="check_tasks" Content="Tasks" HorizontalAlignment="Left" Margin="520,319,0,0" VerticalAlignment="Top">
             <CheckBox.RenderTransform>
                 <CompositeTransform ScaleX="2" ScaleY="2"/>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <CheckBox Content="LINQ" HorizontalAlignment="Left" Margin="520,383,0,0" VerticalAlignment="Top">
+        <CheckBox x:Name="check_linq" Content="LINQ" HorizontalAlignment="Left" Margin="520,383,0,0" VerticalAlignment="Top">
             <CheckBox.RenderTransform>
                 <CompositeTransform ScaleX="2" ScaleY="2"/>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <Button Content="Set cars" HorizontalAlignment="Center" Margin="0,487,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="36" Click="Button_Click_1" Background="#33000000"/>
+        <CheckBox x:Name="check_single" Content="Single Thread" HorizontalAlignment="Left" Margin="520,447,0,0" VerticalAlignment="Top">
+            <CheckBox.RenderTransform>
+                <CompositeTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+
+        <Button Content="Set cars" HorizontalAlignment="Center" Margin="0,571,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="36" Click="Button_Click_1" Background="#33000000"/>
 
     </Grid>
 </Page>

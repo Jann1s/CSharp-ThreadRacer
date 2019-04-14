@@ -24,22 +24,29 @@ namespace ThreadRacer
     public sealed partial class RaceWindow : Page
     {
         private Race race;
+        DispatcherTimer dispatcherTimer;
 
         public RaceWindow()
         {
             this.InitializeComponent();
+        }
 
-            race = new Race();
-            race.track = new Tracks.Loop();
-            race.AddCar(new Threading.Task(), 4);
-            race.AddCar(new Threading.Single(), 4);
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            race = (Race)e.Parameter;
 
-            race.StartRace();
-
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = TimeSpan.FromSeconds(2);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Start();
+
+            progressBar.IsIndeterminate = true;
+            progressBar.Value = 0;
+            progressBar.Maximum = race.AmountCars();
+            progressBar.Minimum = 0;
+
+            System.Threading.Tasks.Task task = new System.Threading.Tasks.Task(() => race.StartRace());
+            task.Start();
         }
 
         private void DispatcherTimer_Tick(object sender, object e)
@@ -50,7 +57,26 @@ namespace ThreadRacer
             if (result.Count > 0)
             {
                 //Results should be now shown!
-                string test = "";
+                progressBar.Value = progressBar.Maximum;
+                resultText.Text += "\r\n";
+                resultText.Text += "\r\n";
+
+                foreach (KeyValuePair<string, long> car in result)
+                {
+                    resultText.Text += car.Key + ": " + car.Value + "\r\n";
+                }
+
+                dispatcherTimer.Stop();
+            }
+            else
+            {
+                int amount = race.AmountFinished();
+
+                if (amount > 0)
+                {
+                    progressBar.IsIndeterminate = false;
+                    progressBar.Value = amount;
+                }
             }
         }
 

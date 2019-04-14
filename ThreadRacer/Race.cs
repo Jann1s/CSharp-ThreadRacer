@@ -25,10 +25,55 @@ namespace ThreadRacer
 
         public void StartRace()
         {
+            for (int i = 0; i < cars.Count; i++)
+            {
+                if (i != 0)
+                {
+                    if (IsFinished(cars[i - 1]))
+                    {
+                        cars[i].Start(track);
+                    }
+                }
+                else
+                {
+                    cars[i].Start(track);
+                }
+            }
+        }
+
+        private bool IsFinished(Car car)
+        {
+            if (car.IsFinished())
+            {
+                return true;
+            }
+            else
+            {
+                Thread.Task.Delay(1000).Wait();
+                IsFinished(car);
+            }
+
+            return false;
+        }
+
+        public int AmountFinished()
+        {
+            int amount = 0;
+
             foreach (Car car in cars)
             {
-                car.Start(track);
+                if (car.IsFinished())
+                {
+                    amount++;
+                }
             }
+
+            return amount;
+        }
+
+        public int AmountCars()
+        {
+            return cars.Count();
         }
 
         public Dictionary<string, long> GetResult()
@@ -42,7 +87,7 @@ namespace ThreadRacer
 
             if (result.ContainsValue(0))
             {
-                result = new Dictionary<string, long>();
+                result.Clear();
             }
 
             return result;
@@ -65,6 +110,18 @@ namespace ThreadRacer
             {
                 CheckFinished();
             }
+        }
+
+        public List<string> GetCars()
+        {
+            List<string> carList = new List<string>();
+
+            foreach(Car car in cars)
+            {
+                carList.Add(car.GetThreadMethod());
+            }
+
+            return carList;
         }
     }
 }
