@@ -22,9 +22,25 @@ namespace ThreadRacer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Race race;
         public MainPage()
         {
+            race = new Race();
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is Race)
+            {
+                Race tmpRace = (Race)e.Parameter;
+
+                if (tmpRace.track != null)
+                {
+                    race.track = tmpRace.track;
+                    trackSelection.Text = "= " + race.track.ToString();
+                }
+            }
         }
 
         public void SetTrackText(String text)
@@ -34,12 +50,12 @@ namespace ThreadRacer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SelectTrack));
+            this.Frame.Navigate(typeof(SelectTrack), race);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SelectCar));
+            this.Frame.Navigate(typeof(SelectCar), race);
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

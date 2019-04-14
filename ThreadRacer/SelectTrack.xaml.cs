@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using ThreadRacer.Tracks;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ThreadRacer
@@ -22,9 +24,17 @@ namespace ThreadRacer
     /// </summary>
     public sealed partial class SelectTrack : Page
     {
+        private Race race;
         public SelectTrack()
         {
             this.InitializeComponent();
+
+            
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            race = (Race)e.Parameter;
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
@@ -41,22 +51,25 @@ namespace ThreadRacer
         //Factorials
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
-            //String text = "Factorials";
-            //MainPage.SetTrackText(text);            
-            //MainPage.trackSelection.Text = "Factorials";
+            ITrack track = new CalcLargeFactorials();
+            race.track = track;
+            this.Frame.Navigate(typeof(MainPage), race);
         }
 
         //Loop
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            ITrack track = new Loop();
+            race.track = track;
+            this.Frame.Navigate(typeof(MainPage), race);
         }
 
         //Prime Numbers
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            ITrack track = new PrimeNumbers();
+            race.track = track;
+            this.Frame.Navigate(typeof(MainPage), race);
         }
     }
 }
