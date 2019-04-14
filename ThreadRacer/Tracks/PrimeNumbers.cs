@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace ThreadRacer.Tracks
 {
-    class PrimeNumbers
+    class PrimeNumbers : ITrack
     {
 
         private List<Func<bool>> functions;
 
         public PrimeNumbers()
         {
+            functions = new List<Func<bool>>();
+
             functions.Add(GetTotalPrimeNumbers);
             functions.Add(PopulateArrayWithPrimeNumbers);
         }

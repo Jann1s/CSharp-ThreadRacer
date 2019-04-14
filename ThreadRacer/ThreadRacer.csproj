@@ -137,6 +137,7 @@
     <Compile Include="Threading\AsyncAwait.cs" />
     <Compile Include="Threading\IThreading.cs" />
     <Compile Include="Threading\LINQMethod.cs" />
+    <Compile Include="Threading\Single.cs" />
     <Compile Include="Threading\Task.cs" />
     <Compile Include="Threading\ThreadPool.cs" />
     <Compile Include="ThreadRacer.cs" />

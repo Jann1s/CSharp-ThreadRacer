@@ -18,24 +18,40 @@ namespace ThreadRacer.Threading
             int methodCount = functions.Count / numberOfThreads;
             int buffer = functions.Count % numberOfThreads;
 
-            for (int i = 0; i < numberOfThreads; i++)
+            foreach (Func<bool> func in functions)
             {
+                Thread.Task task = new Thread.Task(() =>
+                {
+                    func();
+                });
+
+                tasks.Add(task);
+            }
+
+            for (int i = 0; i < functions.Count; i++)
+            {
+                /*
                 if (index < functions.Count)
                 {
                     Thread.Task task = new Thread.Task(() =>
                     {
-                        functions[index]();
-                        index++;
-
+                        functions[i]();
+                        /*
                         if (buffer >= 1)
                         {
                             functions[index]();
                             index++;
                         }
+                        else
+                        {
+                            index++;
+                        }
                     });
 
                     tasks.Add(task);
-                }
+
+                    index++;
+                }*/
             }
 
             foreach(Thread.Task t in tasks)
