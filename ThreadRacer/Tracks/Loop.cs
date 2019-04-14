@@ -12,6 +12,8 @@ namespace ThreadRacer.Tracks
 
         public Loop()
         {
+            functions = new List<Func<bool>>();
+
             functions.Add(EasyLoop);
             functions.Add(MediumLoop);
             functions.Add(HardLoop);
@@ -53,6 +55,11 @@ namespace ThreadRacer.Tracks
             for (int i = 0; i < Int32.MaxValue; i++)
             {
                 numberList.Add(i);
+
+                if (numberList.Count > 100000)
+                {
+                    numberList.Clear();
+                }
             }
 
             int count = Int32.MinValue;
