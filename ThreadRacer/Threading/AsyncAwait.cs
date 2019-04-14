@@ -41,7 +41,7 @@ namespace ThreadRacer.Threading
 
             foreach (Thread.Task t in tasks)
             {
-                t.Start();
+                await t.Start();
             }
 
             Thread.Task.WaitAll(tasks.ToArray());
