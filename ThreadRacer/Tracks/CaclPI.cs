@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace ThreadRacer.Tracks
 {
-    class CaclPI
+    class CaclPI : ITrack
     {
 
         private List<Func<bool>> functions;
-        private int smallPi = 1000;
-        private int mediumPi = 1000000;
-        private int bigPi = 1000000000;
+        private int smallPi = 10000;
+        private int mediumPi = 100000;
+        private int bigPi = 1000000;
 
         public CaclPI()
         {
             functions = new List<Func<bool>>();
             functions.Add(SmallPi);
             functions.Add(MediumPi);
+            functions.Add(MediumPi);
+            functions.Add(BigPi);
             functions.Add(BigPi);
         }
 

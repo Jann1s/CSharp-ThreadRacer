@@ -58,6 +58,10 @@ namespace ThreadRacer
                     {
                         trackSelection.Text = "= Prime Numbers";
                     }
+                    else if (race.track is Tracks.CaclPI)
+                    {
+                        trackSelection.Text = "= Calculate Pi";
+                    }
                 }
 
                 string[] cars = race.GetCars().ToArray();
