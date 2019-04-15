@@ -61,7 +61,7 @@ namespace ThreadRacer
             }
             else if (race.track is Tracks.CaclPI)
             {
-                resultText.Text += "= Calculate Pi";
+                resultText.Text += " Calculate Pi";
             }
 
             System.Threading.Tasks.Task task = new System.Threading.Tasks.Task(() => race.StartRace());
