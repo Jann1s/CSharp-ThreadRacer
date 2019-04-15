@@ -9,12 +9,26 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Background="#FF555353">
-        <Button Content="Select Track" HorizontalAlignment="Left" Margin="112,108,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="30" Click="Button_Click" Background="#33000000"/>
-        <Button Content="Select Cars" HorizontalAlignment="Left" Margin="112,260,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="30" Background="#33000000" Click="Button_Click_1"/>
-        <Button Content="Start Race" HorizontalAlignment="Left" Margin="112,546,0,0" VerticalAlignment="Top" Height="100" Width="200" FontSize="30" RequestedTheme="Default" Background="#33000000" Click="Button_Click_2"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,30,0,0" Text="ThreadRacer" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48"/>
-        <TextBlock x:Name="trackSelection" HorizontalAlignment="Left" Margin="365,138,0,0" Text="= No Track selected" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"/>
-        <TextBlock x:Name="carSelection" HorizontalAlignment="Left" Margin="365,290,0,0" Text="= No Cars selected" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+
+        <Button Grid.Row="1" Grid.Column="0" Content="Select Track" HorizontalAlignment="Stretch" Margin="50, 30" VerticalAlignment="Stretch" FontSize="30" Click="Button_Click" Background="#33000000"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="Select Cars" HorizontalAlignment="Stretch" Margin="50, 30" VerticalAlignment="Stretch" FontSize="30" Background="#33000000" Click="Button_Click_1"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="Start Race" HorizontalAlignment="Stretch" Margin="50, 30" VerticalAlignment="Stretch" FontSize="30" RequestedTheme="Default" Background="#33000000" Click="Button_Click_2"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="10" Text="ThreadRacer" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="trackSelection" HorizontalAlignment="Stretch" Margin="10" Text="= No Track selected" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="carSelection" HorizontalAlignment="Stretch" Margin="10" Text="= No Cars selected" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30"/>
 
     </Grid>
 </Page>

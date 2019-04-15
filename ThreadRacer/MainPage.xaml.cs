@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,8 +26,12 @@ namespace ThreadRacer
         private Race race;
         public MainPage()
         {
-            race = new Race();
             this.InitializeComponent();
+            race = new Race();
+
+            ApplicationView.PreferredLaunchViewSize = new Size(1000, 600);
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(1000, 600));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
