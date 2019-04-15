@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ThreadRacer.Tracks
 {
+    // calculates the given digits after the comma, while calculating PI (3.14......)
     class CaclPI
     {
-
         private List<Func<bool>> functions;
-        private int smallPi = 1000;
-        private int mediumPi = 1000000;
-        private int bigPi = 1000000000;
+        private const int numbersAfterCommaAfterCommaSmall = 1000;
+        private const int numbersAfterCommaAfterCommaNormal = 10000;
+        private const int numbersAfterCommaAfterCommaBig = 10000000;
 
         public CaclPI()
         {
@@ -30,31 +28,29 @@ namespace ThreadRacer.Tracks
 
         public bool SmallPi()
         {
-            GetPi(smallPi, 1);
-            return true;
+            return CalculatePi(numbersAfterCommaAfterCommaSmall);
         }
 
         public bool MediumPi()
         {
-            GetPi(mediumPi, 1);
-            return true;
+            return CalculatePi(numbersAfterCommaAfterCommaNormal);
         }
 
         public bool BigPi()
         {
-            GetPi(bigPi, 1);
-            return true;
+            return CalculatePi(numbersAfterCommaAfterCommaBig);
         }
         
-        private BigInteger GetPi(int digits, int iterations)
+        private bool CalculatePi(int numbersAfterComma)
         {
-            return 16 * CalcArcTan(5, digits).ElementAt(iterations)- 4 * CalcArcTan(239, digits).ElementAt(iterations);
+            BigInteger pi = 16 * CalcArcTan(5, numbersAfterComma).ElementAt(1)- 4 * CalcArcTan(239, numbersAfterComma).ElementAt(1);
+            return true;
         }
 
-        private IEnumerable<BigInteger> CalcArcTan(int x, int digits)
+        private IEnumerable<BigInteger> CalcArcTan(int x, int numbersAfterComma)
         {
-            var mag = BigInteger.Pow(10, digits);
-            var sum = BigInteger.Zero;
+            BigInteger mag = BigInteger.Pow(10, numbersAfterComma);
+            BigInteger sum = BigInteger.Zero;
             bool sign = true;
             for (int i = 1; true; i += 2)
             {
