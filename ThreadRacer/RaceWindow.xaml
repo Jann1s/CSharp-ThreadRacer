@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" Text="The Race" TextWrapping="Wrap" FontSize="48"/>
-        <TextBlock x:Name="resultText" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Results" TextWrapping="Wrap" FontSize="36"/>
+        <TextBlock x:Name="resultText" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Results" TextWrapping="Wrap" FontSize="30"/>
         <Button Grid.Row="0" Grid.Column="0" Margin="50,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Back" FontSize="30" Background="#33000000" Click="Button_Click"/>
         <ProgressBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" x:Name="progressBar" Value="50"/>
     </Grid>
