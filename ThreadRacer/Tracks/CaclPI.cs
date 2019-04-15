@@ -9,9 +9,9 @@ namespace ThreadRacer.Tracks
     class CaclPI : ITrack
     {
         private List<Func<bool>> functions;
-        private const int numbersAfterCommaAfterCommaSmall = 10000;
-        private const int numbersAfterCommaAfterCommaNormal = 100000;
-        private const int numbersAfterCommaAfterCommaBig = 1000000;
+        private const int numbersAfterCommaSmall = 10000;
+        private const int numbersAfterCommaNormal = 100000;
+        private const int numbersAfterCommaBig = 1000000;
 
         public CaclPI()
         {
@@ -30,17 +30,17 @@ namespace ThreadRacer.Tracks
 
         public bool SmallPi()
         {
-            return CalculatePi(numbersAfterCommaAfterCommaSmall);
+            return CalculatePi(numbersAfterCommaSmall);
         }
 
         public bool MediumPi()
         {
-            return CalculatePi(numbersAfterCommaAfterCommaNormal);
+            return CalculatePi(numbersAfterCommaNormal);
         }
 
         public bool BigPi()
         {
-            return CalculatePi(numbersAfterCommaAfterCommaBig);
+            return CalculatePi(numbersAfterCommaBig);
         }
         
         private bool CalculatePi(int numbersAfterComma)
