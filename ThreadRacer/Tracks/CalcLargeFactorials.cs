@@ -10,9 +10,9 @@ namespace ThreadRacer.Tracks
     class CalcLargeFactorials : ITrack
     {
         private List<Func<bool>> functions;
-        const uint FACTORIAL_LARGE = 5000;
-        const uint FACTORIAL_LARGER = 10000;
-        const uint FACTORIAL_LARGEST = 15000;
+        const uint FACTORIAL_LARGE = 15000;
+        const uint FACTORIAL_LARGER = 25000;
+        const uint FACTORIAL_LARGEST = 50000;
 
         public CalcLargeFactorials()
         {

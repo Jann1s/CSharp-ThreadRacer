@@ -45,6 +45,21 @@ namespace ThreadRacer
             progressBar.Maximum = race.AmountCars();
             progressBar.Minimum = 0;
 
+            resultText.Text = "Results - ";
+
+            if (race.track is Tracks.CalcLargeFactorials)
+            {
+                resultText.Text += " Calculate large factorials";
+            }
+            else if (race.track is Tracks.Loop)
+            {
+                resultText.Text += " Loop";
+            }
+            else if (race.track is Tracks.PrimeNumbers)
+            {
+                resultText.Text += " Prime Numbers";
+            }
+
             System.Threading.Tasks.Task task = new System.Threading.Tasks.Task(() => race.StartRace());
             task.Start();
         }
@@ -58,12 +73,13 @@ namespace ThreadRacer
             {
                 //Results should be now shown!
                 progressBar.Value = progressBar.Maximum;
+
                 resultText.Text += "\r\n";
                 resultText.Text += "\r\n";
 
                 foreach (KeyValuePair<string, long> car in result)
                 {
-                    resultText.Text += car.Key + ": " + car.Value + "\r\n";
+                    resultText.Text += car.Key + ": " + car.Value + " ms \r\n";
                 }
 
                 dispatcherTimer.Stop();
