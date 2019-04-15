@@ -15,8 +15,6 @@ namespace ThreadRacer.Threading
             List<Func<bool>> functions = track.GetFunctions();
 
             int index = 0;
-            int methodCount = functions.Count / numberOfThreads;
-            int buffer = functions.Count % numberOfThreads;
 
             for (int i = 0; i < numberOfThreads; i++)
             {
@@ -26,12 +24,6 @@ namespace ThreadRacer.Threading
                     {
                         functions[index]();
                         index++;
-
-                        if (buffer >= 1)
-                        {
-                            functions[index]();
-                            index++;
-                        }
                     });
 
                     tasks.Add(task);
