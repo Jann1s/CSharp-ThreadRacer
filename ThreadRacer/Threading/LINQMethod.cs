@@ -14,20 +14,14 @@ namespace ThreadRacer.Threading
             List<Thread.Task> tasks = new List<Thread.Task>();
             List<Func<bool>> functions = track.GetFunctions();
 
-            int index = 0;
-
-            for (int i = 0; i < numberOfThreads; i++)
+            foreach (Func<bool> func in functions)
             {
-                if (index < functions.Count)
+                Thread.Task task = new Thread.Task(() =>
                 {
-                    Thread.Task task = new Thread.Task(() =>
-                    {
-                        functions[index]();
-                        index++;
-                    });
+                    func();
+                });
 
-                    tasks.Add(task);
-                }
+                tasks.Add(task);
             }
 
             IEnumerable<Thread.Task> linqQuery = from task in tasks.AsParallel()
