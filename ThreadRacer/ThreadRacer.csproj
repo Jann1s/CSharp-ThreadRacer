@@ -141,6 +141,7 @@
     <Compile Include="Threading\Task.cs" />
     <Compile Include="Threading\ThreadPool.cs" />
     <Compile Include="ThreadRacer.cs" />
+    <Compile Include="Tracks\CaclPI.cs" />
     <Compile Include="Tracks\CalcLargeFactorials.cs" />
     <Compile Include="Tracks\Database.cs" />
     <Compile Include="Tracks\ITrack.cs" />

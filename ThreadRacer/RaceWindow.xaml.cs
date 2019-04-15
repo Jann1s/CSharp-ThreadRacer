@@ -59,6 +59,10 @@ namespace ThreadRacer
             {
                 resultText.Text += " Prime Numbers";
             }
+            else if (race.track is Tracks.CaclPI)
+            {
+                resultText.Text += "= Calculate Pi";
+            }
 
             System.Threading.Tasks.Task task = new System.Threading.Tasks.Task(() => race.StartRace());
             task.Start();

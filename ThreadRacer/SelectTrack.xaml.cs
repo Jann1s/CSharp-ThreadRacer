@@ -72,5 +72,12 @@ namespace ThreadRacer
             race.track = track;
             this.Frame.Navigate(typeof(MainPage), race);
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            ITrack track = new CaclPI();
+            race.track = track;
+            this.Frame.Navigate(typeof(MainPage), race);
+        }
     }
 }

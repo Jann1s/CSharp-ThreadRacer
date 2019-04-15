@@ -21,6 +21,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="20px" />
         </Grid.RowDefinitions>
 
@@ -29,6 +30,6 @@
         <Button Grid.Column="2" Grid.Row="1" Content="Factorials" HorizontalAlignment="Stretch" Margin="50,30" VerticalAlignment="Stretch" FontSize="30" Background="#33000000" Click="Button_Click_1"/>
         <Button Grid.Column="2" Grid.Row="2" Content="Loop" HorizontalAlignment="Stretch" Margin="50,30" VerticalAlignment="Stretch" Background="#33000000" FontSize="36" Click="Button_Click_2"/>
         <Button Grid.Column="2" Grid.Row="3" Content="Prime Nrs." HorizontalAlignment="Stretch" Margin="50,30" VerticalAlignment="Stretch" FontSize="30" Background="#33000000" Click="Button_Click_3"/>
-
+        <Button Grid.Column="2" Grid.Row="4" Content="Calculate Pi" HorizontalAlignment="Stretch" Margin="50,30" VerticalAlignment="Stretch" FontSize="30" Background="#33000000" Click="Button_Click_4"/>
     </Grid>
 </Page>
